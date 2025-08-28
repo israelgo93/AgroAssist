@@ -61,41 +61,48 @@ function App() {
           left: 0,
         }}
       >
-        <div style={{ marginBottom: "4rem", textAlign: "center" }}>
+        <div style={{ 
+          marginBottom: conversationUrl ? "2rem" : "4rem", 
+          textAlign: "center" 
+        }}>
           <div style={{ 
             display: "flex", 
             alignItems: "center", 
             justifyContent: "center", 
-            marginBottom: "1rem" 
+            marginBottom: conversationUrl ? "0.5rem" : "1rem" 
           }}>
             <span 
               className="agro-icon"
               style={{ 
-                fontSize: "3.5rem", 
-                marginRight: "1rem",
-                filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3))"
+                fontSize: conversationUrl ? "2.5rem" : "3.5rem", 
+                marginRight: conversationUrl ? "0.7rem" : "1rem",
+                filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3))",
+                transition: "all 0.3s ease"
               }}>🌾</span>
             <h1 style={{ 
               marginBottom: "0", 
-              fontSize: "3.2rem", 
+              fontSize: conversationUrl ? "2.2rem" : "3.2rem", 
               fontWeight: "600",
               letterSpacing: "-0.01em",
               textShadow: "0 2px 8px rgba(0,0,0,0.4)",
-              fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+              fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+              transition: "all 0.3s ease"
             }}>
               AgroAssist IA
             </h1>
           </div>
-          <p style={{
-            fontSize: "1.2rem",
-            opacity: 0.95,
-            fontWeight: "400",
-            margin: 0,
-            letterSpacing: "0.01em",
-            color: "#F0F7E8"
-          }}>
-            Asistente inteligente para la agroindustria
-          </p>
+          {!conversationUrl && (
+            <p style={{
+              fontSize: "1.2rem",
+              opacity: 0.95,
+              fontWeight: "400",
+              margin: 0,
+              letterSpacing: "0.01em",
+              color: "#F0F7E8"
+            }}>
+              Asistente inteligente para la agroindustria
+            </p>
+          )}
         </div>
         
         {error && (
@@ -164,23 +171,43 @@ function App() {
             )}
           </button>
         ) : (
-          <div 
-            className="conversation-container"
-            style={{ 
-              width: "100%", 
-              maxWidth: "850px", 
-              height: "75vh",
-              borderRadius: "12px",
-              overflow: "hidden",
-              boxShadow: "0 8px 24px rgba(45, 80, 22, 0.3)",
-              border: "2px solid rgba(244, 196, 48, 0.2)",
-              background: "rgba(255, 255, 255, 0.95)"
+          <>
+            <div 
+              className="conversation-container"
+              style={{ 
+                width: "100%", 
+                maxWidth: "1200px", 
+                height: "85vh",
+                borderRadius: "12px",
+                overflow: "hidden",
+                boxShadow: "0 8px 24px rgba(45, 80, 22, 0.3)",
+                border: "2px solid rgba(244, 196, 48, 0.2)",
+                background: "rgba(255, 255, 255, 0.95)",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+              }}>
+              <Conversation
+                conversationUrl={conversationUrl}
+                onLeave={handleLeaveConversation}
+              />
+            </div>
+            <div style={{
+              marginTop: "1rem",
+              textAlign: "center",
+              opacity: 0.8
             }}>
-            <Conversation
-              conversationUrl={conversationUrl}
-              onLeave={handleLeaveConversation}
-            />
-          </div>
+              <p style={{
+                fontSize: "1rem",
+                color: "#F0F7E8",
+                margin: 0,
+                fontWeight: "400",
+                letterSpacing: "0.01em"
+              }}>
+                Asistente inteligente para la agroindustria
+              </p>
+            </div>
+          </>
         )}
       </div>
     </CVIProvider>

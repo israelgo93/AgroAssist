@@ -1,19 +1,26 @@
 /* SelectDevice styles */
 .selectDevice {
 	height: 3rem;
-	width: 5.5rem;
-	border-radius: 9999px;
-	background-color: rgba(255, 255, 255, 0.2);
-	padding: 0 0.75rem;
-	border: 1px solid rgba(255, 255, 255, 0.2);
+	width: auto;
+	min-width: 8rem;
+	max-width: 16rem;
+	border-radius: 8px;
+	background-color: rgba(255, 255, 255, 0.95);
+	padding: 0 2.5rem 0 0.75rem;
+	border: 1px solid rgba(244, 196, 48, 0.3);
 	backdrop-filter: blur(10px);
-	color: transparent;
-	padding-right: 2rem; /* space for arrow */
+	color: #1f2937;
 	box-sizing: border-box;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
 	cursor: pointer;
+	font-size: 0.85rem;
+	font-weight: 500;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 .selectDevice::-ms-expand {
@@ -21,12 +28,21 @@
 }
 
 .selectDevice option {
-	color: transparent;
-	background-color: transparent;
+	color: #1f2937;
+	background-color: rgba(255, 255, 255, 0.95);
+	padding: 0.5rem;
+	font-weight: 500;
 }
 
 .selectDevice:focus {
 	outline: none;
+	border-color: rgba(244, 196, 48, 0.8);
+	box-shadow: 0 0 0 3px rgba(244, 196, 48, 0.3), 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.selectDevice:hover {
+	border-color: rgba(244, 196, 48, 0.5);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Device button container styles */
@@ -93,11 +109,12 @@
 
 .selectArrow {
 	position: absolute;
-	right: 1rem;
+	right: 0.75rem;
 	pointer-events: none;
 	display: flex;
 	align-items: center;
 	height: 100%;
+	color: #1f2937;
 }
 
 .screenShareButton {
