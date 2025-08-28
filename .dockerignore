@@ -80,3 +80,6 @@ docker-compose.*.yml
 guia_*.txt
 ejemplo_*.js
 test_*.js
+
+# IMPORTANTE: NO ignorar nginx.conf ya que se necesita para Cloud Run
+# nginx.conf

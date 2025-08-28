@@ -152,7 +152,8 @@ El Dockerfile incluye:
 ## 🚨 Troubleshooting
 
 ### Error: "dockerfile parse error line 57: unknown instruction: WORKER_PROCESSES"
-**Solución**: Error de formato en configuración de Nginx. Ya corregido en la última versión del Dockerfile.
+**Causa**: Google Cloud Build no soporta heredocs (`<< 'EOF'`) sin BuildKit habilitado.
+**Solución**: Usar archivo `nginx.conf` separado en lugar de heredoc. ✅ Ya corregido.
 
 ### Error: "Port not configured"
 Asegúrate de que el puerto 8080 esté expuesto en el Dockerfile.
