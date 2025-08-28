@@ -1,0 +1,156 @@
+​✅ Indicador del sistema para IA: Integración de React (Vite) + Tavus CVIPropósito: 
+Generar aplicaciones React (TypeScript) con Tavus CVI usando Vite , siguiendo los documentos oficiales y los ejemplos de GitHub:
+ https://docs.tavus.io/sections/integrations/embedding-cvi​✅ LA IA SIEMPRE DEBE HACER LO SIGUIENTE:
+ 
+​1. Configurar la aplicación React con ViteCopiarPregúntale a la IAnpm create vite@latest my-tavus-app -- --template react-ts
+cd my-tavus-app
+npm install
+​2. Instalar los componentes de la interfaz de usuario de Tavus CVICopiarPregúntale a la IAnpx @tavus/cvi-ui@latest init
+npx @tavus/cvi-ui@latest add conversation
+✅ Esto crea:CopiarPregúntale a la IAsrc/components/cvi/components/
+  cvi-provider.tsx
+  conversation.tsx
+​3. Envuelva la aplicación conCVIProviderActualizar src/App.tsx:CopiarPregúntale a la IAimport { CVIProvider } from "./components/cvi/components/cvi-provider";
+
+function App() {
+  return <CVIProvider>{/* Your app content */}</CVIProvider>;
+}
+​4. Crear una llamada a la API de conversaciónUtilice siempre este patrón:CopiarPregúntale a la IAconst response = await fetch("https://tavusapi.com/v2/conversations", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "x-api-key": import.meta.env.VITE_TAVUS_API_KEY || "",
+  },
+  body: JSON.stringify({
+    replica_id: import.meta.env.VITE_REPLICA_ID || "rfe12d8b9597",  // Default
+    persona_id: import.meta.env.VITE_PERSONA_ID || "pdced222244b",  // Default
+  }),
+});
+
+const data = await response.json();
+setConversationUrl(data.conversation_url);
+✅ Explicación: conversation_url la respuesta de la API se utiliza dentro de <Conversation>.
+​5. Renderizar Conversationen el interiorCVIProviderCopiarPregúntale a la IA<Conversation
+  conversationUrl={conversationUrl}
+  onLeave={() => setConversationUrl(null)}
+/>
+​6. Agregar variable de entornoCrea .enven la my-tavus-appcarpeta (si no está ya allí):CopiarPregúntale a la IA VITE_TAVUS_API_KEY=your_api_key_here
+VITE_REPLICA_ID=rfe12d8b9597   // Default replica_id, can be overridden in .env
+VITE_PERSONA_ID=pdced222244b  // Default persona_id, can be overridden in .env
+
+Importante : NO lo cree .envfuera de la my-tavus-appcarpeta. Debe estar dentro del directorio de su proyecto, donde src se encuentra.
+Acceso vía:CopiarPregúntale a la IAimport.meta.env.VITE_TAVUS_API_KEY
+import.meta.env.VITE_REPLICA_ID
+import.meta.env.VITE_PERSONA_ID
+​7. Crear cvi-components.jsonpor defectoAsegúrese de que el cvi-components.jsonarchivo se genere en la my-tavus-appcarpeta con el siguiente contenido:CopiarPregúntale a la IA{
+  "tsx": true
+}
+​✅ Ejemplo de resultado esperado de IA src/App.tsx: Copiar Pregúntale a la IA 
+import React, { useState } from "react";
+import { CVIProvider } from "./components/cvi/components/cvi-provider";
+import { Conversation } from "./components/cvi/components/conversation";
+
+const App: React.FC = () => {
+  const [conversationUrl, setConversationUrl] = useState<string | null>(null);
+
+  const createConversation = async () => {
+    const response = await fetch("https://tavusapi.com/v2/conversations", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": import.meta.env.VITE_TAVUS_API_KEY || "",
+      },
+      body: JSON.stringify({
+        replica_id: import.meta.env.VITE_REPLICA_ID || "rfe12d8b9597",
+        persona_id: import.meta.env.VITE_PERSONA_ID || "pdced222244b",
+      }),
+    });
+
+    const data = await response.json();
+    setConversationUrl(data.conversation_url);
+  };
+
+  return (
+    <CVIProvider>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100vw",
+          height: "100vh",
+          backgroundColor: "#1e1e1e",
+          color: "#fff",
+          textAlign: "center",
+          flexDirection: "column",
+          margin: 0,
+          padding: 0,
+        }}
+      >
+        <h1 style={{ marginBottom: "1rem" }}>Tavus CVI Integration (Vite)</h1>
+        {!conversationUrl ? (
+          <button
+            onClick={createConversation}
+            style={{
+              padding: "0.75rem 1.5rem",
+              fontSize: "1rem",
+              background: "#6a0dad",  // Purple for light and dark modes
+              color: "#fff",
+              border: "none",
+              borderRadius: "6px",
+              cursor: "pointer",
+            }}
+          >
+            Start Conversation
+          </button>
+        ) : (
+          <div style={{ width: "100%", maxWidth: "800px" }}>
+            <Conversation
+              conversationUrl={conversationUrl}
+              onLeave={() => setConversationUrl(null)}
+            />
+          </div>
+        )}
+      </div>
+    </CVIProvider>
+  );
+};
+
+export default App;
+​✅ Lista de verificación para resultados de IA
+
+✅ Utiliza Vite + React TypeScript ( npm create vite@latest --template react-ts)
+
+
+✅ Incluye npx @tavus/cvi-ui inityadd conversation
+
+
+✅ Importaciones CVIProvidery Conversationdesrc/components/cvi/components/
+
+
+✅ Utiliza la llamada API correcta con:
+
+https://tavusapi.com/v2/conversations
+Encabezados: Content-Type,x-api-key
+Cuerpo: replica_id&persona_id
+
+
+
+✅ Usosimport.meta.env.VITE_TAVUS_API_KEY
+
+
+✅ Renders <Conversation>en el interior<CVIProvider>
+
+
+✅ El botón morado es visible tanto en el modo claro como en el oscuro
+
+
+✅ .envse crea dentro de la carpeta de proyecto correcta ( my-tavus-app)
+
+
+✅ cvi-components.jsonse crea por defecto con{ "tsx": true }
+
+​Tenga en cuenta lo siguiente:
+Si ya estás en la my-tavus-appcarpeta, evita ejecutarla cd my-tavus-appde nuevo. Revisa la carpeta actual antes de ejecutar comandos.
+Después de ejecutar la configuración necesaria, recuerde ejecutar npm run devpara iniciar su aplicación.
+NO coloque el .envarchivo fuera de la carpeta del proyecto. Debe estar dentro del my-tavus-appdirectorio.

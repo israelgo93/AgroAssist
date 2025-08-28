@@ -1,0 +1,98 @@
+#root {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Animación para el spinner de carga */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mejoras para la experiencia de usuario */
+.app-container {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Diseño minimalista agroindustrial */
+.app-main-container {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Estilos para botones - Diseño minimalista */
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: #FFD700 !important;
+  box-shadow: 0 6px 20px rgba(244, 196, 48, 0.6) !important;
+  border-color: #F4C430 !important;
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+  background: #E6B800 !important;
+}
+
+/* Animación suave para elementos */
+.app-main-container * {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Responsive design agroindustrial */
+@media (max-width: 768px) {
+  .app-main-container {
+    padding: 15px !important;
+  }
+  
+  h1 {
+    font-size: 2.4rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  p {
+    font-size: 1.1rem !important;
+    margin-bottom: 2.5rem !important;
+  }
+  
+  button {
+    padding: 1rem 2rem !important;
+    font-size: 1.1rem !important;
+    min-width: 240px !important;
+  }
+  
+  .conversation-container {
+    height: 70vh !important;
+    max-width: 95% !important;
+  }
+
+  .agro-icon {
+    font-size: 2.8rem !important;
+    margin-right: 0.8rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem !important;
+  }
+  
+  .agro-icon {
+    font-size: 2.4rem !important;
+    margin-right: 0.6rem !important;
+  }
+  
+  button {
+    min-width: 220px !important;
+    padding: 0.9rem 1.8rem !important;
+    font-size: 1rem !important;
+  }
+}
