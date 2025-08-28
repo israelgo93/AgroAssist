@@ -151,6 +151,9 @@ El Dockerfile incluye:
 
 ## 🚨 Troubleshooting
 
+### Error: "dockerfile parse error line 57: unknown instruction: WORKER_PROCESSES"
+**Solución**: Error de formato en configuración de Nginx. Ya corregido en la última versión del Dockerfile.
+
 ### Error: "Port not configured"
 Asegúrate de que el puerto 8080 esté expuesto en el Dockerfile.
 
@@ -159,6 +162,12 @@ Verifica que todas las variables estén configuradas en Cloud Run.
 
 ### Build falla:
 Revisa los logs en Cloud Build Console para identificar el error específico.
+
+### Error: "terser not found"
+**Solución**: Instalar dependencia faltante:
+```bash
+npm install --save-dev terser
+```
 
 ## 🌐 URL Final
 
