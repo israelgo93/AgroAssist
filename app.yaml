@@ -1,0 +1,32 @@
+# Configuración de Google Cloud Run para AgroAssist IA
+# Este archivo es opcional pero útil para configuraciones específicas
+
+# Configuración del runtime
+env: standard
+
+# Variables de entorno por defecto (se sobrescriben con las configuradas en Cloud Run)
+env_variables:
+  NODE_ENV: "production"
+  PORT: "8080"
+
+# Configuración de recursos
+automatic_scaling:
+  min_instances: 0
+  max_instances: 10
+  target_cpu_utilization: 0.6
+
+# Configuración de red
+network:
+  forwarded_ports:
+    - 8080
+
+# Health checks
+health_check:
+  check_interval_sec: 30
+  timeout_sec: 4
+  unhealthy_threshold: 2
+  healthy_threshold: 2
+
+# Configuración de logging para Cloud Run
+beta_settings:
+  cloud_sql_instances: []
