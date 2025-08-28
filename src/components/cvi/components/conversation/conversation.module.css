@@ -64,8 +64,10 @@
 
 @media (max-width: 768px) {
 	.footerControls {
-		gap: 12px;
+		gap: 8px;
 		padding: 0 1rem;
+		justify-content: center;
+		flex-wrap: wrap;
 	}
 }
 
@@ -88,9 +90,21 @@
 
 @media (max-width: 768px) {
 	.leaveButton {
-		height: 3.5rem;
-		width: 3.5rem;
-		font-size: 18px;
+		height: 2.5rem;
+		width: 2.5rem;
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 480px) {
+	.leaveButton {
+		height: 2rem;
+		width: 2rem;
+		font-size: 12px;
+	}
+	
+	.footerControls {
+		gap: 6px;
 	}
 }
 

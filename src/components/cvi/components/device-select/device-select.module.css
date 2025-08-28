@@ -130,3 +130,70 @@
 	background-color: rgba(255, 255, 255, 0.2);
 	border: 1px solid rgba(255, 255, 255, 0.2);
 }
+
+/* Responsive para móvil - Controles pequeños y discretos */
+@media (max-width: 768px) {
+	/* Ocultar selectores de dispositivos en móvil */
+	.selectDevice {
+		display: none;
+	}
+	
+	.selectDeviceContainer {
+		display: none;
+	}
+	
+	.selectArrow {
+		display: none;
+	}
+	
+	/* Asegurar que solo se muestren los botones de control */
+	.deviceButtonContainer {
+		position: relative;
+		background-color: rgba(255, 255, 255, 0.2);
+		border: 1px solid rgba(255, 255, 255, 0.3);
+		border-radius: 50%;
+		backdrop-filter: blur(8px);
+	}
+	
+	.deviceButton {
+		position: relative;
+		left: 0;
+		top: 0;
+		z-index: 1;
+		height: 2.5rem;
+		width: 2.5rem;
+		background-color: rgba(255, 255, 255, 0.9);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+		border: 1px solid rgba(255, 255, 255, 0.5);
+		font-size: 0.9rem;
+	}
+	
+	.deviceButton:disabled {
+		background-color: rgba(255, 255, 255, 0.5);
+		opacity: 0.6;
+	}
+	
+	.screenShareButton {
+		height: 2.5rem;
+		width: 2.5rem;
+		background-color: rgba(255, 255, 255, 0.9);
+		border: 1px solid rgba(255, 255, 255, 0.5);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+		font-size: 0.8rem;
+	}
+}
+
+/* Extra pequeño para móviles muy compactos */
+@media (max-width: 480px) {
+	.deviceButton {
+		height: 2rem;
+		width: 2rem;
+		font-size: 0.8rem;
+	}
+	
+	.screenShareButton {
+		height: 2rem;
+		width: 2rem;
+		font-size: 0.7rem;
+	}
+}
