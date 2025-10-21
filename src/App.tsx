@@ -88,7 +88,7 @@ function App() {
               fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
               transition: "all 0.3s ease"
             }}>
-              AgroAssist IA
+              Intriago IA - Asistente NeoAgro
             </h1>
           </div>
           {!conversationUrl && (
@@ -100,7 +100,7 @@ function App() {
               letterSpacing: "0.01em",
               color: "#F0F7E8"
             }}>
-              Asistente inteligente para la agroindustria
+              Agrono virtual
             </p>
           )}
         </div>
@@ -204,7 +204,7 @@ function App() {
                 fontWeight: "400",
                 letterSpacing: "0.01em"
               }}>
-                Asistente inteligente para la agroindustria
+                Agrono virtual
               </p>
             </div>
           </>
