@@ -63,24 +63,28 @@ function App() {
       >
         <div style={{ 
           marginBottom: conversationUrl ? "2rem" : "4rem", 
-          textAlign: "center" 
+          textAlign: "center",
+          position: "relative",
+          width: "100%"
         }}>
           <div style={{ 
-            display: "flex", 
-            alignItems: "center", 
-            justifyContent: "center", 
-            marginBottom: conversationUrl ? "0.5rem" : "1rem" 
+            position: "relative",
+            display: "inline-block",
+            marginBottom: conversationUrl ? "0.5rem" : "1rem"
           }}>
             <span 
               className="agro-icon"
               style={{ 
                 fontSize: conversationUrl ? "2.5rem" : "3.5rem", 
-                marginRight: conversationUrl ? "0.7rem" : "1rem",
                 filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3))",
-                transition: "all 0.3s ease"
+                transition: "all 0.3s ease",
+                position: "absolute",
+                left: conversationUrl ? "-3.5rem" : "-4.8rem",
+                top: "50%",
+                transform: "translateY(-50%)"
               }}>🌾</span>
             <h1 style={{ 
-              marginBottom: "0", 
+              margin: "0", 
               fontSize: conversationUrl ? "2.2rem" : "3.2rem", 
               fontWeight: "600",
               letterSpacing: "-0.01em",
@@ -88,7 +92,7 @@ function App() {
               fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
               transition: "all 0.3s ease"
             }}>
-              Intriago IA - Asistente NeoAgro
+              Agronomo Virtual
             </h1>
           </div>
           {!conversationUrl && (
@@ -100,7 +104,7 @@ function App() {
               letterSpacing: "0.01em",
               color: "#F0F7E8"
             }}>
-              Agrono virtual
+              Intriago IA - Asistente NeoAgro
             </p>
           )}
         </div>
@@ -204,7 +208,7 @@ function App() {
                 fontWeight: "400",
                 letterSpacing: "0.01em"
               }}>
-                Agrono virtual
+                Intriago IA - Asistente NeoAgro
               </p>
             </div>
           </>
