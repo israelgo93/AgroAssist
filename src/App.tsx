@@ -92,7 +92,7 @@ function App() {
               fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
               transition: "all 0.3s ease"
             }}>
-              Agronomo Virtual IA
+              Agronomo IA
             </h1>
           </div>
           {!conversationUrl && (
